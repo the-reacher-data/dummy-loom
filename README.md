@@ -1,7 +1,7 @@
 # dummy-loom
 
 ![Python](https://img.shields.io/badge/python-3.12+-2f2f2f)
-![loom-kernel](https://img.shields.io/badge/loom--kernel-0.2.0.dev30-4a4a4a)
+![loom-kernel](https://img.shields.io/badge/loom--kernel-0.2.0.dev33-4a4a4a)
 ![Benchmark](https://img.shields.io/badge/benchmark-loom%20vs%20fastapi%20native-6a6a6a)
 ![Coverage](docs/images/coverage.svg)
 
