@@ -1,0 +1,134 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_min_duration_statement=0"]
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-store}
+      POSTGRES_USER: ${POSTGRES_USER:-store}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-store}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    build: .
+    command: ["uv", "run", "alembic", "upgrade", "head"]
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://store:store@postgres:5432/store}
+      ALEMBIC_DATABASE_URL: ${ALEMBIC_DATABASE_URL:-postgresql+psycopg://store:store@postgres:5432/store}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+  api:
+    build: .
+    command:
+      [
+        "uv",
+        "run",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000",
+        "--reload",
+        "--reload-dir",
+        "src",
+        "--reload-include",
+        "*.py",
+      ]
+    environment:
+      DUMMY_LOOM_CONFIGS: ${DUMMY_LOOM_CONFIGS:-config/api-celery.yaml}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://store:store@postgres:5432/store}
+      ALEMBIC_DATABASE_URL: ${ALEMBIC_DATABASE_URL:-postgresql+psycopg://store:store@postgres:5432/store}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
+      METRICS_ENABLED: ${METRICS_ENABLED:-true}
+      METRICS_PATH: ${METRICS_PATH:-/metrics}
+      TRACE_ENABLED: ${TRACE_ENABLED:-true}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  worker:
+    build: .
+    command:
+      [
+        "uv",
+        "run",
+        "celery",
+        "-A",
+        "app.worker_main:celery_app",
+        "worker",
+        "--loglevel=INFO",
+      ]
+    environment:
+      DUMMY_LOOM_WORKER_CONFIGS: ${DUMMY_LOOM_WORKER_CONFIGS:-config/worker.yaml}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://store:store@postgres:5432/store}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+  flower:
+    build: .
+    command:
+      [
+        "uv",
+        "run",
+        "celery",
+        "-A",
+        "app.worker_main:celery_app",
+        "flower",
+        "--port=5555",
+      ]
+    environment:
+      DUMMY_LOOM_WORKER_CONFIGS: ${DUMMY_LOOM_WORKER_CONFIGS:-config/worker.yaml}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
+    depends_on:
+      redis:
+        condition: service_healthy
+      worker:
+        condition: service_started
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
+  redis_data:

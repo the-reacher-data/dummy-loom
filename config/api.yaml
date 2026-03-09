@@ -1,0 +1,15 @@
+includes:
+  - base.yaml
+  - cache.yaml
+
+database:
+  url: ${oc.env:DATABASE_URL,sqlite+aiosqlite:///./store.db}
+  echo: ${oc.decode:${oc.env:DATABASE_ECHO,false}}
+  pool_pre_ping: true
+
+trace:
+  enabled: ${oc.decode:${oc.env:TRACE_ENABLED,true}}
+
+metrics:
+  enabled: ${oc.decode:${oc.env:METRICS_ENABLED,true}}
+  path: ${oc.env:METRICS_PATH,/metrics}

@@ -1,0 +1,36 @@
+app:
+  name: dummy_store
+  code_path: ../src
+  discovery:
+    mode: modules
+    modules:
+      include:
+        - app.user.model
+        - app.user.use_cases
+        - app.user.interface
+        - app.address.model
+        - app.address.use_cases
+        - app.address.interface
+        - app.product.model
+        - app.product.jobs
+        - app.product.use_cases
+        - app.product.interface
+        - app.order.model
+        - app.order.use_cases
+        - app.order.interface
+        - app.order_item.model
+        - app.order_item.use_cases
+        - app.order_item.interface
+  rest:
+    backend: fastapi
+    title: Dummy Store API
+    version: 0.1.0
+    docs_url: /docs
+    redoc_url: /redoc
+
+logger:
+  name: dummy_loom
+  environment: ${oc.env:ENVIRONMENT,dev}
+  renderer: ${oc.env:LOG_RENDERER,console}
+  colors: ${oc.decode:${oc.env:LOG_COLORS,true}}
+  level: ${oc.env:LOG_LEVEL,INFO}

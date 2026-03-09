@@ -1,0 +1,4 @@
+cache:
+  enabled: ${oc.decode:${oc.env:CACHE_ENABLED,false}}
+  backend: ${oc.env:CACHE_BACKEND,redis}
+  url: ${oc.env:CACHE_URL,redis://localhost:6379/0}

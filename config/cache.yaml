@@ -1,0 +1,13 @@
+cache:
+  enabled: ${oc.decode:${oc.env:CACHE_ENABLED,false}}
+  aiocache_alias: default
+  counter_alias: counters
+  default_ttl: ${oc.decode:${oc.env:CACHE_TTL,120}}
+  default_list_ttl: ${oc.decode:${oc.env:CACHE_LIST_TTL,60}}
+  aiocache:
+    default:
+      cache: aiocache.SimpleMemoryCache
+      serializer:
+        class: loom.core.cache.serializer.MsgspecSerializer
+    counters:
+      cache: aiocache.SimpleMemoryCache

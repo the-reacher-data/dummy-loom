@@ -1,0 +1,14 @@
+celery:
+  broker_url: ${oc.env:CELERY_BROKER_URL,redis://redis:6379/1}
+  result_backend: ${oc.env:CELERY_RESULT_BACKEND,redis://redis:6379/2}
+  worker_concurrency: ${oc.decode:${oc.env:CELERY_WORKER_CONCURRENCY,2}}
+  worker_prefetch_multiplier: ${oc.decode:${oc.env:CELERY_PREFETCH_MULTIPLIER,1}}
+  worker_max_tasks_per_child: ${oc.decode:${oc.env:CELERY_MAX_TASKS_PER_CHILD,100}}
+  task_always_eager: ${oc.decode:${oc.env:CELERY_TASK_ALWAYS_EAGER,false}}
+  timezone: UTC
+  enable_utc: true
+  task_serializer: json
+  result_serializer: json
+  accept_content: [json]
+  queues: [default, notifications, analytics, erp]
+  task_default_queue: default
