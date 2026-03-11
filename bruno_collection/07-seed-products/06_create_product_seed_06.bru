@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_06
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-006",
+    "name": "Seed SSD",
+    "category": "storage",
+    "price_cents": 12900,
+    "stock": 31
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

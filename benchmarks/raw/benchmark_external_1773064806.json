@@ -1,0 +1,86 @@
+{
+  "timestamp": 1773064806,
+  "runtime": {
+    "mode": "external",
+    "workers": 1
+  },
+  "methodology": {
+    "repeats": 2,
+    "warmup_calls": 200,
+    "randomized_target_order": true,
+    "random_seed": 1773064806,
+    "target_order": [
+      "loompy",
+      "loompy-cache-memory",
+      "fastapi-native"
+    ],
+    "request_timeout_seconds": 10.0,
+    "ready_timeout_seconds": 45.0,
+    "scenarios": [
+      {
+        "name": "ping",
+        "requests": 3000,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "get_by_id_with_details",
+        "requests": 3000,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "list_cursor_no_count",
+        "requests": 2200,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "list_offset_with_count",
+        "requests": 2200,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "update_autocrud_plain",
+        "requests": 2200,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      }
+    ],
+    "record_id_interval": {
+      "min": 1,
+      "max": 100
+    }
+  },
+  "results": [
+    {
+      "target": "loompy",
+      "base_url": "http://127.0.0.1:8101",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {},
+      "raw_runs": [],
+      "aggregate": {
+        "by_scenario": []
+      }
+    }
+  ]
+}

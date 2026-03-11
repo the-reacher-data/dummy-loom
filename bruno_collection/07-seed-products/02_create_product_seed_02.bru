@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_02
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-002",
+    "name": "Seed Mouse",
+    "category": "peripherals",
+    "price_cents": 3900,
+    "stock": 6
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

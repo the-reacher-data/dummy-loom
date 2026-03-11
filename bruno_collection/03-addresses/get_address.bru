@@ -1,0 +1,11 @@
+meta {
+  name: get_address
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/users/{{userId}}/addresses/{{addressId}}
+  body: none
+  auth: none
+}

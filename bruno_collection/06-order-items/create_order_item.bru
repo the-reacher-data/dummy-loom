@@ -1,0 +1,24 @@
+meta {
+  name: create_order_item
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/order-items/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "order_id": {{orderId}},
+    "product_id": {{productId}},
+    "quantity": 2,
+    "unit_price_cents": 3000
+  }
+}

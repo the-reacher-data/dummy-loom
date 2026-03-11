@@ -1,0 +1,17 @@
+meta {
+  name: flow_delete_product
+  type: http
+  seq: 13
+}
+
+delete {
+  url: {{baseUrl}}/products/{{productId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

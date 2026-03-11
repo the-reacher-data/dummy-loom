@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_05
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-005",
+    "name": "Seed Webcam",
+    "category": "peripherals",
+    "price_cents": 5900,
+    "stock": 9
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

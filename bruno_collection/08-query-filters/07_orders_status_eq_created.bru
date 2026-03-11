@@ -1,0 +1,17 @@
+meta {
+  name: query_orders_status_eq_created
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/orders/?status__eq=created&limit=10&page=1&sort=id&direction=ASC
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

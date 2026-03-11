@@ -1,0 +1,17 @@
+meta {
+  name: query_products_price_eq_9900
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/products/?price_cents__eq=9900&sort=id&direction=ASC
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

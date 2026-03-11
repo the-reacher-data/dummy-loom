@@ -1,0 +1,33 @@
+meta {
+  name: flow_create_order
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/orders/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "address_id": {{addressId}},
+    "status": "created",
+    "payment_method": "card"
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+  const body = res.getBody();
+  if (body && body.id) {
+    bru.setVar("orderId", String(body.id));
+  }
+}

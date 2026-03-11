@@ -1,0 +1,22 @@
+meta {
+  name: create_user
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/users/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "full_name": "User API Test",
+    "email": "user.api.test@example.com"
+  }
+}

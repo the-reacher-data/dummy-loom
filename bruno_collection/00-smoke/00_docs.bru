@@ -1,0 +1,21 @@
+meta {
+  name: docs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/docs
+  body: none
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

@@ -1,0 +1,25 @@
+meta {
+  name: create_address
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/users/{{userId}}/addresses/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "label": "work",
+    "street": "Street 9",
+    "city": "Lisbon",
+    "country": "PT",
+    "zip_code": "1000-001"
+  }
+}

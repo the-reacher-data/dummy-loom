@@ -1,0 +1,21 @@
+meta {
+  name: update_address
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/users/{{userId}}/addresses/{{addressId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "city": "Porto"
+  }
+}

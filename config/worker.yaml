@@ -2,11 +2,6 @@ includes:
   - base.yaml
   - celery.yaml
 
-database:
-  url: ${oc.env:DATABASE_URL,sqlite+aiosqlite:///./store.db}
-  echo: ${oc.decode:${oc.env:DATABASE_ECHO,false}}
-  pool_pre_ping: true
-
 jobs:
   SendRestockEmailJob:
     queue: notifications

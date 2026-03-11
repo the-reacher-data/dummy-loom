@@ -1,0 +1,26 @@
+app:
+  name: loom-benchmark
+  code_path: ../../..
+  discovery:
+    mode: manifest
+    manifest:
+      module: benchmarks.apps.loom_manifest
+  rest:
+    title: loom-benchmark
+    version: "0.1.0"
+
+database:
+  url: ${oc.env:BENCH_LOOM_DATABASE_URL,postgresql+asyncpg://store:store@127.0.0.1:5432/store}
+  echo: false
+  pool_pre_ping: false
+
+trace:
+  enabled: false
+  header: x-request-id
+
+metrics:
+  enabled: false
+  path: /metrics
+
+logger:
+  level: ${oc.env:LOG_LEVEL,WARNING}

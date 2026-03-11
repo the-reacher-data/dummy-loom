@@ -1,0 +1,186 @@
+{
+  "timestamp": 1772739043,
+  "runtime": {
+    "mode": "external",
+    "workers": 1
+  },
+  "methodology": {
+    "repeats": 1,
+    "warmup_calls": 5,
+    "randomized_target_order": true,
+    "random_seed": 1772739042,
+    "target_order": [
+      "loompy",
+      "fastapi-native",
+      "loompy-cache-memory"
+    ],
+    "scenarios": [
+      {
+        "name": "update_autocrud_plain",
+        "requests": 110,
+        "concurrencies": [
+          20
+        ]
+      }
+    ],
+    "record_id_interval": {
+      "min": 1,
+      "max": 0
+    }
+  },
+  "results": [
+    {
+      "target": "loompy",
+      "base_url": "http://127.0.0.1:8101",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {
+        "users": 120,
+        "records": 1200,
+        "notes": 3600,
+        "notesPerRecord": 3
+      },
+      "raw_runs": [
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 110,
+          "concurrency": 20,
+          "duration_s": 0.3667190840060357,
+          "rps": 299.95711921605243,
+          "success": 110,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 110
+          },
+          "latency_ms": {
+            "min": 9.762292000232264,
+            "p50": 25.97512501233723,
+            "p95": 153.76099999411963,
+            "p99": 157.88545800023712,
+            "max": 159.41324998857453
+          },
+          "repeat": 1
+        }
+      ],
+      "aggregate": {
+        "by_scenario": [
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 20,
+            "repeats": 1,
+            "median_rps": 299.95711921605243,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 25.97512501233723,
+            "median_p95_ms": 153.76099999411963,
+            "median_p99_ms": 157.88545800023712
+          }
+        ]
+      }
+    },
+    {
+      "target": "fastapi-native",
+      "base_url": "http://127.0.0.1:8102",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {
+        "users": 120,
+        "records": 1200,
+        "notes": 3600,
+        "notes_per_record": 3
+      },
+      "raw_runs": [
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 110,
+          "concurrency": 20,
+          "duration_s": 0.2770701659901533,
+          "rps": 397.01134767396513,
+          "success": 110,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 110
+          },
+          "latency_ms": {
+            "min": 5.485208996105939,
+            "p50": 28.814353994675912,
+            "p95": 125.66733299172483,
+            "p99": 129.11204199190252,
+            "max": 136.56641700072214
+          },
+          "repeat": 1
+        }
+      ],
+      "aggregate": {
+        "by_scenario": [
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 20,
+            "repeats": 1,
+            "median_rps": 397.01134767396513,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 28.814353994675912,
+            "median_p95_ms": 125.66733299172483,
+            "median_p99_ms": 129.11204199190252
+          }
+        ]
+      }
+    },
+    {
+      "target": "loompy-cache-memory",
+      "base_url": "http://127.0.0.1:8103",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {
+        "users": 120,
+        "records": 1200,
+        "notes": 3600,
+        "notesPerRecord": 3
+      },
+      "raw_runs": [
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 110,
+          "concurrency": 20,
+          "duration_s": 0.272425083006965,
+          "rps": 403.78073408603007,
+          "success": 110,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 110
+          },
+          "latency_ms": {
+            "min": 9.829374990658835,
+            "p50": 24.79933349241037,
+            "p95": 156.22450000955723,
+            "p99": 164.44170798058622,
+            "max": 165.76450000866316
+          },
+          "repeat": 1
+        }
+      ],
+      "aggregate": {
+        "by_scenario": [
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 20,
+            "repeats": 1,
+            "median_rps": 403.78073408603007,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 24.79933349241037,
+            "median_p95_ms": 156.22450000955723,
+            "median_p99_ms": 164.44170798058622
+          }
+        ]
+      }
+    }
+  ]
+}

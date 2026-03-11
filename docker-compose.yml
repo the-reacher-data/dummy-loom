@@ -60,7 +60,6 @@ services:
         "*.py",
       ]
     environment:
-      DUMMY_LOOM_CONFIGS: ${DUMMY_LOOM_CONFIGS:-config/api-celery.yaml}
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://store:store@postgres:5432/store}
       ALEMBIC_DATABASE_URL: ${ALEMBIC_DATABASE_URL:-postgresql+psycopg://store:store@postgres:5432/store}
       CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
@@ -69,8 +68,8 @@ services:
       METRICS_PATH: ${METRICS_PATH:-/metrics}
       TRACE_ENABLED: ${TRACE_ENABLED:-true}
     depends_on:
-      migrate:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
       redis:
         condition: service_healthy
     ports:
@@ -91,13 +90,12 @@ services:
         "--loglevel=INFO",
       ]
     environment:
-      DUMMY_LOOM_WORKER_CONFIGS: ${DUMMY_LOOM_WORKER_CONFIGS:-config/worker.yaml}
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://store:store@postgres:5432/store}
       CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
     depends_on:
-      migrate:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
       redis:
         condition: service_healthy
     volumes:
@@ -116,7 +114,6 @@ services:
         "--port=5555",
       ]
     environment:
-      DUMMY_LOOM_WORKER_CONFIGS: ${DUMMY_LOOM_WORKER_CONFIGS:-config/worker.yaml}
       CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
     depends_on:

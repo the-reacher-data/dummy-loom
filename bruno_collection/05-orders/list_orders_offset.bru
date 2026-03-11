@@ -1,0 +1,11 @@
+meta {
+  name: list_orders_offset
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/orders/?limit=10&page=1&sort=id&direction=ASC
+  body: none
+  auth: none
+}

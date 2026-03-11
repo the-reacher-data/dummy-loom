@@ -1,0 +1,21 @@
+meta {
+  name: update_order
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/orders/{{orderId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "status": "paid"
+  }
+}

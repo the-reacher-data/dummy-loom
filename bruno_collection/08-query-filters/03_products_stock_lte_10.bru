@@ -1,0 +1,17 @@
+meta {
+  name: query_products_stock_lte_10
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/products/?stock__lte=10&sort=stock&direction=ASC
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

@@ -23,7 +23,7 @@ help:
 	@echo "  make sync                  - Sync dependencies with uv (dev group)"
 	@echo "  make install               - Alias of sync"
 	@echo "  make lock                  - Generate/refresh uv.lock"
-	@echo "  make migrate               - Apply Alembic migrations"
+	@echo "  make migrate               - Apply Alembic migrations (compose service)"
 	@echo "  make revision              - Create Alembic revision (MSG=...)"
 	@echo "  make run                   - Run store API"
 	@echo "  make run-dev               - Run store API with auto reload"
@@ -36,10 +36,10 @@ help:
 	@echo "  make benchmark-isolated-down - Stop isolated benchmark stack"
 	@echo "  make check                 - Run ruff + mypy + tests"
 	@echo "  make build                 - Build docker images"
-	@echo "  make up                    - Start compose stack in background"
+	@echo "  make up                    - Start compose stack in background (without migrate)"
 	@echo "  make down                  - Stop compose stack"
 	@echo "  make recreate              - Recreate compose stack"
-	@echo "  make rebuild               - Rebuild all, start, and stream logs"
+	@echo "  make rebuild               - Rebuild from zero and run migrate"
 	@echo "  make destroy               - Drop volumes, rebuild all, and stream logs"
 	@echo "  make restart               - Restart compose stack"
 	@echo "  make logs                  - Follow compose logs"
@@ -58,7 +58,7 @@ lock:
 	$(UV) lock
 
 migrate:
-	DATABASE_URL=$(DATABASE_URL) ALEMBIC_DATABASE_URL=$(ALEMBIC_DATABASE_URL) $(UV) run alembic upgrade head
+	$(COMPOSE) run --rm migrate
 
 revision:
 	@if [ -z "$(MSG)" ]; then echo "Usage: make revision MSG='your message'"; exit 1; fi
@@ -78,7 +78,7 @@ coverage:
 
 coverage-badge: coverage
 	mkdir -p docs/images
-	20 20 12 61 79 80 81 701 33 98 100 204 250 395 398 399 400UV) run python scripts/gen_coverage_badge.py --input coverage.xml --output docs/images/coverage.svg
+	$(UV) run python scripts/gen_coverage_badge.py --input coverage.xml --output docs/images/coverage.svg
 
 benchmark:
 	$(UV) run python benchmarks/scripts/run_benchmark.py
@@ -111,10 +111,10 @@ recreate:
 	$(COMPOSE) up -d --build --force-recreate
 
 rebuild:
-	$(COMPOSE) down --remove-orphans
+	$(COMPOSE) down -v --remove-orphans
 	$(COMPOSE) build --no-cache
 	$(COMPOSE) up -d --force-recreate
-	$(COMPOSE) logs -f
+	$(MAKE) migrate
 
 destroy:
 	$(COMPOSE) down -v --remove-orphans

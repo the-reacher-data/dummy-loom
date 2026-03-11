@@ -1,0 +1,10 @@
+includes:
+  - base.yaml
+
+trace:
+  enabled: true
+  header: x-request-id
+
+metrics:
+  enabled: true
+  path: /metrics

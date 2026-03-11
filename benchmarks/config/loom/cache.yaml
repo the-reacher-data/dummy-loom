@@ -1,0 +1,25 @@
+includes:
+  - base.yaml
+
+trace:
+  enabled: false
+
+metrics:
+  enabled: false
+
+cache:
+  enabled: true
+  aiocache_alias: cache
+  counter_alias: counters
+  default_ttl: 60
+  default_list_ttl: 30
+  max_size: 5000
+  aiocache:
+    cache:
+      cache: aiocache.SimpleMemoryCache
+      namespace: loom_benchmark
+      serializer:
+        class: loom.core.cache.serializer.MsgspecSerializer
+    counters:
+      cache: aiocache.SimpleMemoryCache
+      namespace: loom_benchmark_counters

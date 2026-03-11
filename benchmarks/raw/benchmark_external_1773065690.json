@@ -1,0 +1,2474 @@
+{
+  "timestamp": 1773065690,
+  "runtime": {
+    "mode": "external",
+    "workers": 1
+  },
+  "methodology": {
+    "repeats": 2,
+    "warmup_calls": 200,
+    "randomized_target_order": true,
+    "random_seed": 1773065690,
+    "target_order": [
+      "fastapi-native",
+      "loompy",
+      "loompy-cache-memory"
+    ],
+    "request_timeout_seconds": 10.0,
+    "ready_timeout_seconds": 45.0,
+    "scenarios": [
+      {
+        "name": "ping",
+        "requests": 3000,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "get_by_id_with_details",
+        "requests": 3000,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "list_cursor_no_count",
+        "requests": 2200,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "list_offset_with_count",
+        "requests": 2200,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      },
+      {
+        "name": "update_autocrud_plain",
+        "requests": 2200,
+        "concurrencies": [
+          20,
+          100,
+          300
+        ]
+      }
+    ],
+    "record_id_interval": {
+      "min": 1,
+      "max": 100
+    }
+  },
+  "results": [
+    {
+      "target": "fastapi-native",
+      "base_url": "http://127.0.0.1:8102",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {
+        "users": 120,
+        "records": 1200,
+        "notes": 3600,
+        "notes_per_record": 3
+      },
+      "raw_runs": [
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 4.847834417014383,
+          "rps": 618.8330173718265,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 6.3541669805999845,
+            "p50": 23.631833493709564,
+            "p95": 80.49129199935123,
+            "p99": 115.03650000668131,
+            "max": 206.67162499739788
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 3.426136750000296,
+          "rps": 875.6217918037687,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.076291996985674,
+            "p50": 67.63424999371637,
+            "p95": 357.30062500806525,
+            "p99": 601.8230420013424,
+            "max": 1184.1978330048732
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 11.372331583028426,
+          "rps": 263.7981471167328,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 7.459291984559968,
+            "p50": 1135.1623749942519,
+            "p95": 1953.135249990737,
+            "p99": 2316.333124996163,
+            "max": 4447.979290998774
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.800632458995096,
+          "rps": 517.1849830526447,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 1.771375013049692,
+            "p50": 28.08556251693517,
+            "p95": 93.5579999932088,
+            "p99": 143.39129099971615,
+            "max": 233.1834580108989
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 5.6020427079929505,
+          "rps": 535.5189448519598,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 11.337874981109053,
+            "p50": 121.57868749636691,
+            "p95": 549.7577500063926,
+            "p99": 842.4089589971118,
+            "max": 1568.7918750045355
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 18.342708250012947,
+          "rps": 163.55272946119516,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.937374979723245,
+            "p50": 2042.5922499998705,
+            "p95": 2439.043332997244,
+            "p99": 2749.4274580094498,
+            "max": 3645.822708000196
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.4109179159859195,
+          "rps": 498.76239864424235,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 8.740124991163611,
+            "p50": 29.23670799646061,
+            "p95": 99.59366702241823,
+            "p99": 150.75612501823343,
+            "max": 259.90291699417867
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.4088455000019167,
+          "rps": 645.3797920729359,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.172959009651095,
+            "p50": 109.88266648200806,
+            "p95": 485.1599580142647,
+            "p99": 856.470625003567,
+            "max": 1378.08287498774
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 10.727073957998073,
+          "rps": 205.08854591793755,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.599082986824214,
+            "p50": 1705.8275210001739,
+            "p95": 2443.961000011768,
+            "p99": 2777.1639579732437,
+            "max": 3609.4467910006642
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.55827879102435,
+          "rps": 482.63831609685496,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.28112500696443,
+            "p50": 30.685374498716556,
+            "p95": 101.77695800666697,
+            "p99": 151.488875009818,
+            "max": 294.8416669969447
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.412988708005287,
+          "rps": 498.5283547200421,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.67441701889038,
+            "p50": 136.10418750613462,
+            "p95": 575.3277499752585,
+            "p99": 839.3802909995429,
+            "max": 1401.3898330158554
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 13.964683541009435,
+          "rps": 157.54026888897,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.408542013261467,
+            "p50": 2075.2619374979986,
+            "p95": 2636.1481670173816,
+            "p99": 2791.3351250172127,
+            "max": 3226.717416982865
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.599491416011006,
+          "rps": 478.31375276442867,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.33383300434798,
+            "p50": 31.779603988979943,
+            "p95": 97.65495799365453,
+            "p99": 144.44191599613987,
+            "max": 259.2075419961475
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.606541582994396,
+          "rps": 477.5817086122842,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.588417004328221,
+            "p50": 143.52937499643303,
+            "p95": 591.5508329926524,
+            "p99": 936.4448330015875,
+            "max": 1677.7286250144243
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 13.09820608299924,
+          "rps": 167.9619320431582,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 8.236333000240847,
+            "p50": 2055.8563329977915,
+            "p95": 2240.3952500026207,
+            "p99": 2440.574124979321,
+            "max": 3180.3334160067607
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.006825749995187,
+          "rps": 599.1820266568861,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 4.713625006843358,
+            "p50": 24.50075000524521,
+            "p95": 81.91874998738058,
+            "p99": 112.25820798426867,
+            "max": 248.24866699054837
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 2.2850704159936868,
+          "rps": 1312.8698262435903,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 7.025499973678961,
+            "p50": 68.61772949923761,
+            "p95": 89.28149999701418,
+            "p99": 212.80604100320488,
+            "max": 325.9859170066193
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 10.114175166003406,
+          "rps": 296.61341145087596,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.625292015494779,
+            "p50": 918.802083004266,
+            "p95": 1786.7294999887235,
+            "p99": 2337.53158399486,
+            "max": 4328.431709000142
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.687332375004189,
+          "rps": 527.4880738788878,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 2.10791701101698,
+            "p50": 27.344875008566305,
+            "p95": 91.4026670216117,
+            "p99": 158.60662501654588,
+            "max": 350.62304098391905
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 4.58326283300994,
+          "rps": 654.5555228456814,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 7.427665987052023,
+            "p50": 99.27039599278942,
+            "p95": 497.8637919994071,
+            "p99": 837.2191670059692,
+            "max": 1410.256292001577
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 14.386787708004704,
+          "rps": 208.52465893625592,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 10.245208017295226,
+            "p50": 1834.332667014678,
+            "p95": 2237.5154579931404,
+            "p99": 2484.376250009518,
+            "max": 3991.3567080220673
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.402689332986483,
+          "rps": 499.69458065479046,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 8.699915983015671,
+            "p50": 29.747937005595304,
+            "p95": 95.48695801640861,
+            "p99": 153.53691700147465,
+            "max": 318.5385420219973
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.9872443749918602,
+          "rps": 551.7595093489826,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.855665994109586,
+            "p50": 101.62660398054868,
+            "p95": 598.7048340030015,
+            "p99": 1084.2059589922428,
+            "max": 1616.0681250039488
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 8.495536457980052,
+          "rps": 258.95951490308653,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.505875001195818,
+            "p50": 963.0331249936717,
+            "p95": 2255.584666010691,
+            "p99": 2771.301583008608,
+            "max": 3751.7379579949193
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.557382458995562,
+          "rps": 482.73323992318075,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 7.555958000011742,
+            "p50": 30.86310399521608,
+            "p95": 98.69070799322799,
+            "p99": 158.93750000395812,
+            "max": 306.668457982596
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.683042499993462,
+          "rps": 597.3322327950071,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.262167012318969,
+            "p50": 127.94233301247004,
+            "p95": 459.3617920181714,
+            "p99": 907.3224589810707,
+            "max": 1531.0957500187214
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 11.351924707996659,
+          "rps": 193.79973498681238,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.605165996821597,
+            "p50": 1861.3587294967147,
+            "p95": 2459.196375013562,
+            "p99": 2636.70225001988,
+            "max": 3204.039042000659
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.561360499996226,
+          "rps": 482.312239956,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 1.1913749913219362,
+            "p50": 31.059000015375204,
+            "p95": 99.40866698161699,
+            "p99": 158.61608399427496,
+            "max": 316.22408400289714
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.4158823330071755,
+          "rps": 644.0502878983035,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 1.6577909991610795,
+            "p50": 96.20991599513218,
+            "p95": 483.7597080040723,
+            "p99": 893.0657909950241,
+            "max": 1803.449750004802
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 9.913251125020906,
+          "rps": 221.9251759341828,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 13.07483299751766,
+            "p50": 1384.4873335037846,
+            "p95": 2338.3648749731947,
+            "p99": 2686.569750017952,
+            "max": 3655.0446250184905
+          },
+          "repeat": 2
+        }
+      ],
+      "aggregate": {
+        "by_scenario": [
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 522.3365284657663,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 27.715218762750737,
+            "median_p95_ms": 92.48033350741025,
+            "median_p99_ms": 150.998958008131
+          },
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 595.0372338488205,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 110.42454174457816,
+            "median_p95_ms": 523.8107710028999,
+            "median_p99_ms": 839.8140630015405
+          },
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 186.03869419872552,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1938.4624585072743,
+            "median_p95_ms": 2338.279395495192,
+            "median_p99_ms": 2616.901854009484
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 499.2284896495164,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 29.492322501027957,
+            "median_p95_ms": 97.54031251941342,
+            "median_p99_ms": 152.14652100985404
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 598.5696507109592,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 105.75463523127837,
+            "median_p95_ms": 541.9323960086331,
+            "median_p99_ms": 970.3382919979049
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 232.02403041051204,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1334.4303229969228,
+            "median_p95_ms": 2349.7728330112295,
+            "median_p99_ms": 2774.2327704909258
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 482.6857780100179,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 30.774239246966317,
+            "median_p95_ms": 100.23383299994748,
+            "median_p99_ms": 155.21318750688806
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 547.9302937575246,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 132.02326025930233,
+            "median_p95_ms": 517.3447709967149,
+            "median_p99_ms": 873.3513749903068
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 175.6700019378912,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1968.3103334973566,
+            "median_p95_ms": 2547.672271015472,
+            "median_p99_ms": 2714.0186875185464
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 609.0075220143563,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 24.066291749477386,
+            "median_p95_ms": 81.2050209933659,
+            "median_p99_ms": 113.64735399547499
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 1094.2458090236796,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 68.12598974647699,
+            "median_p95_ms": 223.29106250253972,
+            "median_p99_ms": 407.31454150227364
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 280.2057792838044,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1026.982228999259,
+            "median_p95_ms": 1869.9323749897303,
+            "median_p99_ms": 2326.9323544955114
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 480.31299636021436,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 31.419302002177574,
+            "median_p95_ms": 98.53181248763576,
+            "median_p99_ms": 151.5289999952074
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 560.8159982552938,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 119.8696454957826,
+            "median_p95_ms": 537.6552704983624,
+            "median_p99_ms": 914.7553119983058
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 194.9435539886705,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1720.171833250788,
+            "median_p95_ms": 2289.3800624879077,
+            "median_p99_ms": 2563.5719374986365
+          }
+        ]
+      }
+    },
+    {
+      "target": "loompy",
+      "base_url": "http://127.0.0.1:8101",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {
+        "users": 120,
+        "records": 1200,
+        "notes": 3600,
+        "notesPerRecord": 3
+      },
+      "raw_runs": [
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.221053125016624,
+          "rps": 574.5967198888534,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 6.615499994950369,
+            "p50": 26.61720798641909,
+            "p95": 84.38399998703972,
+            "p99": 118.54158400092274,
+            "max": 209.83391697518528
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 2.8575420420092996,
+          "rps": 1049.8533200549273,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 7.66145798843354,
+            "p50": 67.71658350771759,
+            "p95": 251.63441599579528,
+            "p99": 486.9863750063814,
+            "max": 950.2984169812407
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 14.779343708010856,
+          "rps": 202.98600934315564,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.116541983326897,
+            "p50": 1891.6661874973215,
+            "p95": 2043.0963749822695,
+            "p99": 2283.990875002928,
+            "max": 3074.6722090116236
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.78546237500268,
+          "rps": 518.5410958616095,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 1.5410419728141278,
+            "p50": 28.346583494567312,
+            "p95": 96.44500000285916,
+            "p99": 139.2771250102669,
+            "max": 261.6392089985311
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 5.99019120799494,
+          "rps": 500.81873780522807,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 9.011584013933316,
+            "p50": 125.77987498661969,
+            "p95": 622.3242499982007,
+            "p99": 947.9268750001211,
+            "max": 1566.3688330096193
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 17.870410292001907,
+          "rps": 167.87527264232327,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 11.783541995100677,
+            "p50": 2052.594645487261,
+            "p95": 2591.6568340035155,
+            "p99": 2853.8567920040805,
+            "max": 3440.8858330280054
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.7251278329931665,
+          "rps": 465.5958690976608,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 7.56479098345153,
+            "p50": 32.2162085067248,
+            "p95": 104.33249999186955,
+            "p99": 164.75441702641547,
+            "max": 210.88045800570399
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.3776856669865083,
+          "rps": 651.3335511065445,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.973374999593943,
+            "p50": 105.77856251620688,
+            "p95": 517.1551250095945,
+            "p99": 1032.221125002252,
+            "max": 1615.8535830036271
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 11.302979792002589,
+          "rps": 194.63893950837704,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.409500013338402,
+            "p50": 1796.1222500016447,
+            "p95": 2478.6021249892656,
+            "p99": 2729.081124998629,
+            "max": 3992.8133750217967
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.728936208004598,
+          "rps": 465.2209087270185,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 4.863167006988078,
+            "p50": 32.21406199736521,
+            "p95": 101.9321669882629,
+            "p99": 164.76554199471138,
+            "max": 303.49741701502353
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.6011410409992095,
+          "rps": 478.14226523302483,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.961790994973853,
+            "p50": 141.83943801617716,
+            "p95": 578.7574579881039,
+            "p99": 886.955374997342,
+            "max": 1580.8134170074482
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 12.505276999989292,
+          "rps": 175.92573119347009,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.675667017698288,
+            "p50": 1951.2958959967364,
+            "p95": 2856.3373340002727,
+            "p99": 2992.8745420183986,
+            "max": 3228.8804999843705
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.520260749995941,
+          "rps": 486.6975870810053,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 1.5942919999361038,
+            "p50": 31.068937489180826,
+            "p95": 99.28066699649207,
+            "p99": 177.41358300554566,
+            "max": 286.0674590046983
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.7633761249890085,
+          "rps": 461.85729244823733,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.832500003743917,
+            "p50": 124.73772949306294,
+            "p95": 649.2860840226058,
+            "p99": 986.1510409973562,
+            "max": 1566.942959005246
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 12.51630099999602,
+          "rps": 175.7707808401779,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.898000026121736,
+            "p50": 2003.3209164976142,
+            "p95": 2537.943749979604,
+            "p99": 2755.244792002486,
+            "max": 3248.871332994895
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.01081462498405,
+          "rps": 598.7050458905271,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 4.068375012138858,
+            "p50": 24.120291505823843,
+            "p95": 85.83633301896043,
+            "p99": 126.63908299873583,
+            "max": 202.30779200210236
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 4.949877084000036,
+          "rps": 606.0756558374326,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 6.196583999553695,
+            "p50": 115.3067289997125,
+            "p95": 467.59499999461696,
+            "p99": 713.848457991844,
+            "max": 1332.993042015005
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 14.178296166006476,
+          "rps": 211.59100958778984,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 7.012957998085767,
+            "p50": 1807.9829790076474,
+            "p95": 1939.7664169955533,
+            "p99": 2157.276041980367,
+            "max": 3531.379708001623
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.600991999992402,
+          "rps": 535.6194045633468,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 6.392624985892326,
+            "p50": 27.76512499258388,
+            "p95": 90.3788750001695,
+            "p99": 138.87641701148823,
+            "max": 294.1191669960972
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 5.166612125001848,
+          "rps": 580.6512909073714,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.988124987808987,
+            "p50": 110.25785451056436,
+            "p95": 534.2438330117147,
+            "p99": 774.4223750196397,
+            "max": 1339.7354169865139
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 17.583245917019667,
+          "rps": 170.61696197379325,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 9.72879200708121,
+            "p50": 2060.1010835089255,
+            "p95": 2721.528291993309,
+            "p99": 2898.3477909932844,
+            "max": 3334.2918750131503
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.424337583011948,
+          "rps": 497.2495788855041,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.159000008367002,
+            "p50": 30.655291993753053,
+            "p95": 98.5320000036154,
+            "p99": 143.00787501269951,
+            "max": 239.3766670138575
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.038627208996331,
+          "rps": 544.7395578129475,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.153750005178154,
+            "p50": 123.11393750132993,
+            "p95": 519.9715420021676,
+            "p99": 811.0270000179298,
+            "max": 1232.1268340165261
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 11.368274500011466,
+          "rps": 193.5210132371259,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 8.968334004748613,
+            "p50": 1910.8197079913225,
+            "p95": 2366.711792012211,
+            "p99": 2723.3831249759533,
+            "max": 3481.104749982478
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.4815621659799945,
+          "rps": 490.90025275124583,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 8.80258300458081,
+            "p50": 31.215854003676213,
+            "p95": 98.80641699419357,
+            "p99": 150.90495799086057,
+            "max": 238.64654201315716
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.154659082996659,
+          "rps": 697.3812200049795,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 12.660958018386737,
+            "p50": 105.14900050475262,
+            "p95": 411.8946669914294,
+            "p99": 873.0753750132862,
+            "max": 1297.5193329912145
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 11.13766091701109,
+          "rps": 197.52801027007683,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.398374986834824,
+            "p50": 1670.5846040131291,
+            "p95": 2719.6921659924556,
+            "p99": 3097.2168750013225,
+            "max": 3530.7105419924483
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.7687067090009805,
+          "rps": 461.3410163907708,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.560458991676569,
+            "p50": 32.00235449185129,
+            "p95": 106.18125001201406,
+            "p99": 157.04900000127964,
+            "max": 233.15775001537986
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.917534250009339,
+          "rps": 447.3786837368386,
+          "success": 2196,
+          "errors": 4,
+          "error_rate": 0.0018181818181818182,
+          "status_codes": {
+            "200": 2196,
+            "exception": 4
+          },
+          "latency_ms": {
+            "min": 11.920000019017607,
+            "p50": 139.3505205051042,
+            "p95": 702.0172920019832,
+            "p99": 1005.6943750241771,
+            "max": 1587.8632919921074
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 12.567364874994382,
+          "rps": 175.05658679309917,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 12.771832989528775,
+            "p50": 1902.1421039942652,
+            "p95": 2686.985000007553,
+            "p99": 2935.645999998087,
+            "max": 4326.954207994277
+          },
+          "repeat": 2
+        }
+      ],
+      "aggregate": {
+        "by_scenario": [
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 527.0802502124782,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 28.055854243575595,
+            "median_p95_ms": 93.41193750151433,
+            "median_p99_ms": 139.07677101087756
+          },
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 540.7350143562998,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 118.01886474859202,
+            "median_p95_ms": 578.2840415049577,
+            "median_p99_ms": 861.1746250098804
+          },
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 169.24611730805827,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 2056.3478644980933,
+            "median_p95_ms": 2656.592562998412,
+            "median_p99_ms": 2876.1022914986825
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 481.4227239915824,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 31.435750250238925,
+            "median_p95_ms": 101.43224999774247,
+            "median_p99_ms": 153.8811460195575
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 598.036554459746,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 114.4462500087684,
+            "median_p95_ms": 518.563333505881,
+            "median_p99_ms": 921.6240625100909
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 194.07997637275147,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1853.4709789964836,
+            "median_p95_ms": 2422.6569585007383,
+            "median_p99_ms": 2726.232124987291
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 478.0605807391322,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 31.71495800052071,
+            "median_p95_ms": 100.36929199122824,
+            "median_p99_ms": 157.83524999278598
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 587.7617426190021,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 123.49421926046489,
+            "median_p95_ms": 495.3260624897666,
+            "median_p99_ms": 880.0153750053141
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 186.72687073177346,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1810.9402500049328,
+            "median_p95_ms": 2788.014749996364,
+            "median_p99_ms": 3045.0457085098606
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 586.6508828896903,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 25.368749746121466,
+            "median_p95_ms": 85.11016650300007,
+            "median_p99_ms": 122.59033349982928
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 827.9644879461799,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 91.51165625371505,
+            "median_p95_ms": 359.6147079952061,
+            "median_p99_ms": 600.4174164991127
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 207.28850946547274,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1849.8245832524844,
+            "median_p95_ms": 1991.4313959889114,
+            "median_p99_ms": 2220.6334584916476
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 474.019301735888,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 31.53564599051606,
+            "median_p95_ms": 102.73095850425307,
+            "median_p99_ms": 167.23129150341265
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 454.617988092538,
+            "median_error_rate": 0.0009090909090909091,
+            "median_p50_ms": 132.04412499908358,
+            "median_p95_ms": 675.6516880122945,
+            "median_p99_ms": 995.9227080107667
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 175.41368381663852,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1952.7315102459397,
+            "median_p95_ms": 2612.4643749935785,
+            "median_p99_ms": 2845.4453960002866
+          }
+        ]
+      }
+    },
+    {
+      "target": "loompy-cache-memory",
+      "base_url": "http://127.0.0.1:8103",
+      "runtime": {
+        "mode": "external",
+        "workers": 1
+      },
+      "dataset": {
+        "users": 120,
+        "records": 1200,
+        "notes": 3600,
+        "notesPerRecord": 3
+      },
+      "raw_runs": [
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 4.775351416988997,
+          "rps": 628.2260169015143,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 5.015916016418487,
+            "p50": 23.473666500649415,
+            "p95": 80.07950001046993,
+            "p99": 125.8000830130186,
+            "max": 304.6441249898635
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 5.068602874991484,
+          "rps": 591.879078710628,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 9.337999974377453,
+            "p50": 115.03916651417967,
+            "p95": 495.44858300941996,
+            "p99": 742.3230420099571,
+            "max": 1185.0406250159722
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 14.732422750006663,
+          "rps": 203.63249486569637,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 7.0574159908574075,
+            "p50": 1769.8599165014457,
+            "p95": 1959.7271670063492,
+            "p99": 3330.920124979457,
+            "max": 4990.505041991128
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 6.862326541013317,
+          "rps": 437.1695199973694,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 1.4268749800976366,
+            "p50": 34.15904150460847,
+            "p95": 115.73225000756793,
+            "p99": 171.5289579879027,
+            "max": 270.7385420217179
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 5.346619124989957,
+          "rps": 561.1022460863313,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 9.369083010824397,
+            "p50": 124.23552048858255,
+            "p95": 510.86662500165403,
+            "p99": 747.4399170023389,
+            "max": 1727.3858340049628
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 19.378468874987448,
+          "rps": 154.8109925171755,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.31116602057591,
+            "p50": 2043.011874993681,
+            "p95": 2831.1944589950144,
+            "p99": 3006.6202919988427,
+            "max": 3978.122208005516
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.51064491699799,
+          "rps": 487.73513333082,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.041625016834587,
+            "p50": 30.70274950005114,
+            "p95": 99.72520798328333,
+            "p99": 156.35991698945872,
+            "max": 215.74012501514517
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.2428075000061654,
+          "rps": 678.4244824880346,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.12937499419786,
+            "p50": 100.75664550822694,
+            "p95": 487.36374999862164,
+            "p99": 777.1423340018373,
+            "max": 1369.4862080155872
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 10.511062832985772,
+          "rps": 209.30328692318054,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.73012502072379,
+            "p50": 1348.6644380027428,
+            "p95": 2914.439999993192,
+            "p99": 3092.098666995298,
+            "max": 4544.266542012338
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.500035334000131,
+          "rps": 488.88505016346073,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.362208016682416,
+            "p50": 31.555333494907245,
+            "p95": 95.67212502588518,
+            "p99": 137.15808300185017,
+            "max": 206.62983300280757
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 3.6566541670181323,
+          "rps": 601.6428952574478,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.965582991251722,
+            "p50": 108.01554199133534,
+            "p95": 534.9345830036327,
+            "p99": 923.9812080049887,
+            "max": 1345.6845410109963
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 10.984702540998114,
+          "rps": 200.27852295398608,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.610250017838553,
+            "p50": 1570.1333539909683,
+            "p95": 2567.9267499945126,
+            "p99": 2798.3167500060517,
+            "max": 3287.4691670003813
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.751814874995034,
+          "rps": 462.98099944440685,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 7.566292013507336,
+            "p50": 32.21133351325989,
+            "p95": 104.4452500063926,
+            "p99": 157.51150000141934,
+            "max": 231.872915988788
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.734082624985604,
+          "rps": 464.71516749386905,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 12.266875011846423,
+            "p50": 149.73293749790173,
+            "p95": 603.2709159771912,
+            "p99": 953.7734579935204,
+            "max": 1547.8309169993736
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 13.729521166998893,
+          "rps": 160.2386545925617,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.455208015628159,
+            "p50": 2089.5075000007637,
+            "p95": 2776.892666006461,
+            "p99": 3039.8794159991667,
+            "max": 3319.313541986048
+          },
+          "repeat": 1
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.226003083982505,
+          "rps": 574.052474097247,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 5.76050000381656,
+            "p50": 25.91074949305039,
+            "p95": 85.76420802273788,
+            "p99": 125.69237500429153,
+            "max": 199.22916698851623
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 5.662601082993206,
+          "rps": 529.7918670291045,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 6.804500008001924,
+            "p50": 126.31095849792473,
+            "p95": 546.0921249759849,
+            "p99": 920.673375017941,
+            "max": 1409.4893749861512
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "ping",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 14.858511333994102,
+          "rps": 201.90447969955366,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 8.50520801031962,
+            "p50": 1739.3600420036819,
+            "p95": 1966.5460420073941,
+            "p99": 4005.9007499949075,
+            "max": 5674.4202919944655
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 20,
+          "duration_s": 5.610829917015508,
+          "rps": 534.6802602057396,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 2.993541012983769,
+            "p50": 26.800437495694496,
+            "p95": 94.42350000608712,
+            "p99": 154.37720797490329,
+            "max": 283.30687500420026
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 100,
+          "duration_s": 4.30306504201144,
+          "rps": 697.177470177785,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 10.578000015811995,
+            "p50": 104.97549999854527,
+            "p95": 392.45858299545944,
+            "p99": 755.926041980274,
+            "max": 1730.8950000151526
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "get_by_id_with_details",
+          "requests": 3000,
+          "concurrency": 300,
+          "duration_s": 17.531581124989316,
+          "rps": 171.11976259367924,
+          "success": 3000,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 3000
+          },
+          "latency_ms": {
+            "min": 10.629583994159475,
+            "p50": 2004.4792085100198,
+            "p95": 2727.777916996274,
+            "p99": 2971.0125839919783,
+            "max": 3415.7009159971494
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.844480208004825,
+          "rps": 454.1250878401378,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 6.771999993361533,
+            "p50": 33.36431299976539,
+            "p95": 108.93787498935126,
+            "p99": 151.41491699614562,
+            "max": 227.17500000726432
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.725660916999914,
+          "rps": 465.5433469815414,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 12.764041981426999,
+            "p50": 140.79091648454778,
+            "p95": 619.9221250135452,
+            "p99": 996.8832079903223,
+            "max": 2157.6024999958463
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_cursor_no_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 11.63909379200777,
+          "rps": 189.01815204124193,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 10.173375019803643,
+            "p50": 1835.8898125006817,
+            "p95": 2527.5048750045244,
+            "p99": 2836.053625011118,
+            "max": 3699.259584012907
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 4.882330791995628,
+          "rps": 450.6044538413509,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 7.114000007277355,
+            "p50": 33.43562499503605,
+            "p95": 104.57787499763072,
+            "p99": 147.9198750166688,
+            "max": 280.6757919897791
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.171285292017274,
+          "rps": 527.4153758339696,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.2039580126293,
+            "p50": 113.42735400830861,
+            "p95": 607.5987090007402,
+            "p99": 904.0708329994231,
+            "max": 1526.501125015784
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "list_offset_with_count",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 11.734380959009286,
+          "rps": 187.4832603172739,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 13.148375001037493,
+            "p50": 1817.7460415026871,
+            "p95": 2698.3945420070086,
+            "p99": 2971.8534580024425,
+            "max": 3597.445332998177
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 20,
+          "duration_s": 5.027315499988617,
+          "rps": 437.6092966524542,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 9.427541022887453,
+            "p50": 34.7296880063368,
+            "p95": 113.14504200709052,
+            "p99": 172.8119589970447,
+            "max": 267.9655840038322
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 100,
+          "duration_s": 4.9065509579959325,
+          "rps": 448.3801388865192,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 13.332666974747553,
+            "p50": 147.1328129991889,
+            "p95": 634.3888329865877,
+            "p99": 972.5934170128312,
+            "max": 1659.1951250156853
+          },
+          "repeat": 2
+        },
+        {
+          "scenario": "update_autocrud_plain",
+          "requests": 2200,
+          "concurrency": 300,
+          "duration_s": 14.043616792012472,
+          "rps": 156.6548014362856,
+          "success": 2200,
+          "errors": 0,
+          "error_rate": 0.0,
+          "status_codes": {
+            "200": 2200
+          },
+          "latency_ms": {
+            "min": 11.955499998293817,
+            "p50": 2157.2906874935143,
+            "p95": 2848.9810000173748,
+            "p99": 3059.992875001626,
+            "max": 3218.8675419893116
+          },
+          "repeat": 2
+        }
+      ],
+      "aggregate": {
+        "by_scenario": [
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 485.9248901015545,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 30.47973950015148,
+            "median_p95_ms": 105.07787500682753,
+            "median_p99_ms": 162.95308298140299
+          },
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 629.1398581320582,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 114.60551024356391,
+            "median_p95_ms": 451.66260399855673,
+            "median_p99_ms": 751.6829794913065
+          },
+          {
+            "scenario": "get_by_id_with_details",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 162.96537755542738,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 2023.7455417518504,
+            "median_p95_ms": 2779.4861879956443,
+            "median_p99_ms": 2988.8164379954105
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 470.93011058547893,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 32.033531249908265,
+            "median_p95_ms": 104.33154148631729,
+            "median_p99_ms": 153.88741699280217
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 571.983914734788,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 120.77378099638736,
+            "median_p95_ms": 553.6429375060834,
+            "median_p99_ms": 887.0127709960798
+          },
+          {
+            "scenario": "list_cursor_no_count",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 199.16071948221122,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1592.2771252517123,
+            "median_p95_ms": 2720.972437498858,
+            "median_p99_ms": 2964.076146003208
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 469.7447520024058,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 32.49547924497165,
+            "median_p95_ms": 100.12500001175795,
+            "median_p99_ms": 142.5389790092595
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 564.5291355457086,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 110.72144799982198,
+            "median_p95_ms": 571.2666460021865,
+            "median_p99_ms": 914.0260205022059
+          },
+          {
+            "scenario": "list_offset_with_count",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 193.88089163563,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1693.9396977468277,
+            "median_p95_ms": 2633.1606460007606,
+            "median_p99_ms": 2885.085104004247
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 601.1392454993806,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 24.692207996849902,
+            "median_p95_ms": 82.9218540166039,
+            "median_p99_ms": 125.74622900865506
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 560.8354728698663,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 120.6750625060522,
+            "median_p95_ms": 520.7703539927024,
+            "median_p99_ms": 831.4982085139491
+          },
+          {
+            "scenario": "ping",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 202.76848728262502,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 1754.6099792525638,
+            "median_p95_ms": 1963.1366045068717,
+            "median_p99_ms": 3668.410437487182
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 20,
+            "repeats": 2,
+            "median_rps": 450.2951480484305,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 33.470510759798344,
+            "median_p95_ms": 108.79514600674156,
+            "median_p99_ms": 165.16172949923202
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 100,
+            "repeats": 2,
+            "median_rps": 456.5476531901941,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 148.43287524854532,
+            "median_p95_ms": 618.8298744818894,
+            "median_p99_ms": 963.1834375031758
+          },
+          {
+            "scenario": "update_autocrud_plain",
+            "concurrency": 300,
+            "repeats": 2,
+            "median_rps": 158.44672801442363,
+            "median_error_rate": 0.0,
+            "median_p50_ms": 2123.399093747139,
+            "median_p95_ms": 2812.9368330119178,
+            "median_p99_ms": 3049.9361455003964
+          }
+        ]
+      }
+    }
+  ]
+}

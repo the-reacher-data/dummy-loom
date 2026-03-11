@@ -1,0 +1,35 @@
+meta {
+  name: flow_create_product
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "BRUNO-SKU-001",
+    "name": "Bruno Keyboard",
+    "category": "peripherals",
+    "price_cents": 12900,
+    "stock": 30
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+  const body = res.getBody();
+  if (body && body.id) {
+    bru.setVar("productId", String(body.id));
+  }
+}

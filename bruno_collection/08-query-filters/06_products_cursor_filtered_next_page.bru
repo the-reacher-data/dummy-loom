@@ -1,0 +1,17 @@
+meta {
+  name: query_products_cursor_filtered_next_page
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/products/?category__eq=peripherals&pagination=cursor&after={{cursor}}&limit=2&sort=id&direction=ASC
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

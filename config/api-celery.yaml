@@ -1,3 +1,0 @@
-includes:
-  - api.yaml
-  - celery.yaml

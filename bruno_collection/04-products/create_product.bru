@@ -1,0 +1,25 @@
+meta {
+  name: create_product
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SKU-API-01",
+    "name": "Mouse",
+    "category": "peripherals",
+    "price_cents": 3000,
+    "stock": 100
+  }
+}

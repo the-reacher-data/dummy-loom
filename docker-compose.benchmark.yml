@@ -1,0 +1,160 @@
+services:
+  bench-postgres-loom-base:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-store}
+      POSTGRES_USER: ${POSTGRES_USER:-store}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-store}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    cpuset: "0"
+
+  bench-postgres-loom-cache:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-store}
+      POSTGRES_USER: ${POSTGRES_USER:-store}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-store}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    cpuset: "1"
+
+  bench-postgres-fastapi:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-store}
+      POSTGRES_USER: ${POSTGRES_USER:-store}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-store}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    cpuset: "2"
+
+  bench-loom-base:
+    build: .
+    command:
+      [
+        "uv",
+        "run",
+        "uvicorn",
+        "benchmarks.apps.loom_app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8101",
+        "--workers",
+        "4",
+        "--loop",
+        "uvloop",
+        "--http",
+        "httptools",
+        "--lifespan",
+        "on",
+        "--timeout-keep-alive",
+        "5",
+        "--no-access-log",
+        "--log-level",
+        "warning"
+      ]
+    environment:
+      BENCH_LOOM_CONFIG: benchmarks/config/loom/base.yaml
+      BENCH_LOOM_DATABASE_URL: ${BENCH_LOOM_BASE_DATABASE_URL:-postgresql+asyncpg://store:store@bench-postgres-loom-base:5432/store}
+      BENCH_SEED_USERS: ${BENCH_SEED_USERS:-120}
+      BENCH_SEED_RECORDS: ${BENCH_SEED_RECORDS:-1200}
+      BENCH_NOTES_PER_RECORD: ${BENCH_NOTES_PER_RECORD:-3}
+      BENCH_TABLE_PREFIX: bench_base
+      LOG_LEVEL: WARNING
+    depends_on:
+      bench-postgres-loom-base:
+        condition: service_healthy
+    ports:
+      - "8101:8101"
+    cpuset: "3"
+
+  bench-loom-cache:
+    build: .
+    command:
+      [
+        "uv",
+        "run",
+        "uvicorn",
+        "benchmarks.apps.loom_app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8103",
+        "--workers",
+        "4",
+        "--loop",
+        "uvloop",
+        "--http",
+        "httptools",
+        "--lifespan",
+        "on",
+        "--timeout-keep-alive",
+        "5",
+        "--no-access-log",
+        "--log-level",
+        "warning"
+      ]
+    environment:
+      BENCH_LOOM_CONFIG: benchmarks/config/loom/cache.yaml
+      BENCH_LOOM_DATABASE_URL: ${BENCH_LOOM_CACHE_DATABASE_URL:-postgresql+asyncpg://store:store@bench-postgres-loom-cache:5432/store}
+      BENCH_SEED_USERS: ${BENCH_SEED_USERS:-120}
+      BENCH_SEED_RECORDS: ${BENCH_SEED_RECORDS:-1200}
+      BENCH_NOTES_PER_RECORD: ${BENCH_NOTES_PER_RECORD:-3}
+      BENCH_TABLE_PREFIX: bench_cache
+      LOG_LEVEL: WARNING
+    depends_on:
+      bench-postgres-loom-cache:
+        condition: service_healthy
+    ports:
+      - "8103:8103"
+    cpuset: "4"
+
+  bench-fastapi:
+    build: .
+    command:
+      [
+        "uv",
+        "run",
+        "uvicorn",
+        "benchmarks.apps.fastapi_native_app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8102",
+        "--workers",
+        "4",
+        "--loop",
+        "uvloop",
+        "--http",
+        "httptools",
+        "--lifespan",
+        "on",
+        "--timeout-keep-alive",
+        "5",
+        "--no-access-log",
+        "--log-level",
+        "warning"
+      ]
+    environment:
+      BENCH_NATIVE_DATABASE_URL: ${BENCH_FASTAPI_DATABASE_URL:-postgresql+asyncpg://store:store@bench-postgres-fastapi:5432/store}
+      BENCH_SEED_USERS: ${BENCH_SEED_USERS:-120}
+      BENCH_SEED_RECORDS: ${BENCH_SEED_RECORDS:-1200}
+      BENCH_NOTES_PER_RECORD: ${BENCH_NOTES_PER_RECORD:-3}
+      LOG_LEVEL: warning
+    depends_on:
+      bench-postgres-fastapi:
+        condition: service_healthy
+    ports:
+      - "8102:8102"
+    cpuset: "5"

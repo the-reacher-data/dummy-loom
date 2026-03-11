@@ -1,0 +1,17 @@
+meta {
+  name: flow_delete_user
+  type: http
+  seq: 14
+}
+
+delete {
+  url: {{baseUrl}}/users/{{userId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

@@ -1,0 +1,17 @@
+meta {
+  name: flow_delete_order
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{baseUrl}}/orders/{{orderId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

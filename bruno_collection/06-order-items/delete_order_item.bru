@@ -1,0 +1,11 @@
+meta {
+  name: delete_order_item
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/order-items/{{orderItemId}}
+  body: none
+  auth: none
+}

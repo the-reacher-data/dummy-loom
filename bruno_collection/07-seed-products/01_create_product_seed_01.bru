@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_01
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-001",
+    "name": "Seed Keyboard",
+    "category": "peripherals",
+    "price_cents": 9900,
+    "stock": 15
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

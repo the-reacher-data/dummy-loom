@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_08
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-008",
+    "name": "Seed Chair",
+    "category": "office",
+    "price_cents": 25900,
+    "stock": 12
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

@@ -1,0 +1,21 @@
+meta {
+  name: flow_list_products_cursor_next
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/products/?pagination=cursor&after={{cursor}}&limit=1&sort=id&direction=ASC
+  body: none
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

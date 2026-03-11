@@ -1,0 +1,21 @@
+meta {
+  name: flow_get_user
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/users/{{userId}}
+  body: none
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

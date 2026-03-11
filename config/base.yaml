@@ -14,6 +14,7 @@ app:
         - app.product.model
         - app.product.jobs
         - app.product.use_cases
+        - app.product.callbacks
         - app.product.interface
         - app.order.model
         - app.order.use_cases
@@ -34,3 +35,8 @@ logger:
   renderer: ${oc.env:LOG_RENDERER,console}
   colors: ${oc.decode:${oc.env:LOG_COLORS,true}}
   level: ${oc.env:LOG_LEVEL,INFO}
+
+database:
+  url: ${oc.env:DATABASE_URL,sqlite+aiosqlite:///./store.db}
+  echo: ${oc.decode:${oc.env:DATABASE_ECHO,false}}
+  pool_pre_ping: true

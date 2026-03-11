@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_04
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-004",
+    "name": "Seed Dock",
+    "category": "accessories",
+    "price_cents": 7900,
+    "stock": 22
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

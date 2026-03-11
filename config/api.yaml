@@ -1,11 +1,7 @@
 includes:
   - base.yaml
   - cache.yaml
-
-database:
-  url: ${oc.env:DATABASE_URL,sqlite+aiosqlite:///./store.db}
-  echo: ${oc.decode:${oc.env:DATABASE_ECHO,false}}
-  pool_pre_ping: true
+  - celery.yaml
 
 trace:
   enabled: ${oc.decode:${oc.env:TRACE_ENABLED,true}}

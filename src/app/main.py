@@ -6,12 +6,12 @@ from fastapi import FastAPI
 
 from loom.rest.fastapi.auto import create_app as create_boot_app
 
-from app.runtime_config import api_config_paths
+from app.config_paths import API_CONFIG_PATHS
 
 
 def create_app() -> FastAPI:
     """Create the API app from one or more config files."""
-    return create_boot_app(*api_config_paths())
+    return create_boot_app(*API_CONFIG_PATHS)
 
 
 app = create_app()

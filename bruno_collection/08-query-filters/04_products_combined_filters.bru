@@ -1,0 +1,17 @@
+meta {
+  name: query_products_combined_filters
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/products/?category__eq=peripherals&stock__lte=10&sort=id&direction=ASC
+  body: none
+  auth: none
+}
+
+tests {
+  test("status is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

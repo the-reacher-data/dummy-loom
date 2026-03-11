@@ -1,0 +1,11 @@
+meta {
+  name: list_products_cursor
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/products/?pagination=cursor&limit=10&sort=id&direction=ASC
+  body: none
+  auth: none
+}

@@ -1,0 +1,21 @@
+meta {
+  name: update_order_item
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/order-items/{{orderItemId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "quantity": 4
+  }
+}

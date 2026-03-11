@@ -1,0 +1,31 @@
+meta {
+  name: seed_create_product_03
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/products/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "sku": "SEED-SKU-003",
+    "name": "Seed Monitor",
+    "category": "screens",
+    "price_cents": 19900,
+    "stock": 4
+  }
+}
+
+tests {
+  test("status is 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}
