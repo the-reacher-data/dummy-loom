@@ -1,8 +1,8 @@
 # dummy-loom
 
-![Python](https://img.shields.io/badge/python-3.12+-2f2f2f)
-![loom-kernel](https://img.shields.io/badge/loom--kernel-0.2.0-4a4a4a)
-![Benchmark](https://img.shields.io/badge/benchmark-loom%20vs%20fastapi%20native-6a6a6a)
+![Python](https://img.shields.io/badge/python-3.12+-3776ab?logo=python&logoColor=white)
+![loom-kernel](https://img.shields.io/badge/loom--kernel-0.2.0-6e40c9)
+![Benchmark](https://img.shields.io/badge/benchmark-loom%20vs%20fastapi-00b4d8)
 ![Coverage](docs/images/coverage.svg)
 
 A realistic sandbox for validating [loom-py](https://github.com/the-reacher-data/loom-py) against a production-grade store API — with full benchmark tracking and fair comparison against a hand-written FastAPI equivalent.
