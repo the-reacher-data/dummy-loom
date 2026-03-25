@@ -563,7 +563,7 @@ make migrate
 make run
 ```
 
-Docker (postgres + redis + celery + flower):
+Docker (postgres + redis + celery + monitor):
 
 ```bash
 make up
@@ -584,7 +584,7 @@ Services after `make up`:
 |---------|------|-------------|
 | `api` | 8000 | FastAPI application (Swagger at `/docs`) |
 | `worker` | — | Celery worker (queues: notifications, analytics, erp) |
-| `flower` | 5555 | Celery Flower dashboard |
+| `monitor` | 5555 | Plywatch monitor dashboard (`http://localhost:5555`) |
 | `postgres` | 5432 | PostgreSQL 16 |
 | `redis` | 6379 | Broker and result backend |
 
@@ -595,3 +595,4 @@ Services after `make up`:
 - [Framework repository](https://github.com/the-reacher-data/loom-py)
 - [Published documentation](https://loom-py.readthedocs.io/en/latest/)
 - [Documentation source](https://github.com/the-reacher-data/loom-py/tree/main/specs)
+- [Plywatch monitor documentation](https://the-reacher-data.github.io/plywatch/)

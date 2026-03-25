@@ -87,6 +87,7 @@ services:
         "-A",
         "app.worker_main:celery_app",
         "worker",
+        "-E",
         "--loglevel=INFO",
       ]
     environment:
@@ -101,21 +102,13 @@ services:
     volumes:
       - .:/app
 
-  flower:
-    build: .
-    command:
-      [
-        "uv",
-        "run",
-        "celery",
-        "-A",
-        "app.worker_main:celery_app",
-        "flower",
-        "--port=5555",
-      ]
+  monitor:
+    image: thereacherdata/plywatch:latest
     environment:
       CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
+      PLYWATCH_CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/1}
+      PLYWATCH_CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND:-redis://redis:6379/2}
     depends_on:
       redis:
         condition: service_healthy
@@ -123,8 +116,6 @@ services:
         condition: service_started
     ports:
       - "5555:5555"
-    volumes:
-      - .:/app
 
 volumes:
   postgres_data:
